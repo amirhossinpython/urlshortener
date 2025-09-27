@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>کوتاه کننده لینک</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f4f4; text-align: center; padding: 40px; }
+    form { margin: 20px auto; padding: 20px; background: #fff; border-radius: 10px; width: 400px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+    input[type="url"] { width: 80%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;}
+    button { padding: 10px 20px; margin-top: 10px; border: none; border-radius: 5px; background: #007bff; color: #fff; cursor: pointer;}
+    button:hover { background: #0056b3; }
+    .result { margin-top: 20px; font-weight: bold; color: green; }
+  </style>
+</head>
+<body>
+  <h1>کوتاه کننده لینک 🔗</h1>
+  <form method="post">
+    {% csrf_token %}
+    <input type="url" name="url" placeholder="لینک خود را وارد کنید..." required>
+    <button type="submit">کوتاه کن</button>
+  </form>
+  {% if new_url %}
+  <div class="result">
+    لینک کوتاه شما: <a href="{{ new_url }}" target="_blank">{{ new_url }}</a>
+  </div>
+  {% endif %}
+</body>
+</html>
